@@ -10,7 +10,8 @@
 
 ```bash
 NFS_FOLDER=</nfs/folder>
-NFS_IP=<ip>
+NFS_IP=<ip address host with nfs share>
+UNOCONV_NGINX_IP=<ip address to nginx load balancer for cluster unoconv>
 ```
 
 ### Example run command
