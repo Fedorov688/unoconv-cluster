@@ -10,7 +10,6 @@ arr=(
 export $(grep -v '^#' .env | xargs -d '\n')
 
 start=`date +%s.%N`
-numberUnoconv=16
 
 for j in {1..5}; do
   echo "loop $j"
@@ -18,7 +17,7 @@ for j in {1..5}; do
       do
         echo "$i"
         timenow=`date +%s.%N`
-        screen -d -m bash -c "unoconv --server=$NFS_IP --port=20$(printf "%02d" $((1+$RANDOM%$numberUnoconv))) -o $NFS_FOLDER/$j-$i-$timenow.pdf -f pdf $NFS_FOLDER/$j-$i"
+        screen -d -m bash -c "unoconv --server=$NFS_IP --port=2001 -o $NFS_FOLDER/$j-$i-$timenow.pdf -f pdf $NFS_FOLDER/$j-$i"
       done
   done
 

@@ -15,8 +15,7 @@ NFS_IP=<ip>
 
 ### Example run command
 ```bash
-numberUnoconv=16
-unoconv --server=<ip> --port=20$(printf "%02d" $((1+$RANDOM%$numberUnoconv))) -f pdf </nfs/folder>/file.odt
+unoconv --server=<ip> --port=2001 -f pdf </nfs/folder>/file.odt
 ```
 
 ### Example nfs config ( /etc/exports )
