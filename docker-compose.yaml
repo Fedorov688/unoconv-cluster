@@ -1,0 +1,119 @@
+version: '3.8'
+
+x-unoconv-common: &unoconv-common
+    build: .
+    image: unoconv:latest
+    restart: unless-stopped
+#    expose:
+#      - "2001"
+    command: unoconv --listener --server 0.0.0.0 --port 2001 -vvv
+    volumes:
+      - type: volume
+        source: volume-nfs
+        target: ${NFS_FOLDER}
+        volume:
+          nocopy: true
+
+services:
+  unoconv-1:
+    <<: *unoconv-common
+    ports:
+      - "2001:2001"
+    hostname: unoconv-1
+
+  unoconv-2:
+    <<: *unoconv-common
+    ports:
+      - "2002:2001"
+    hostname: unoconv-2
+
+  unoconv-3:
+    <<: *unoconv-common
+    ports:
+      - "2003:2001"
+    hostname: unoconv-3
+
+  unoconv-4:
+    <<: *unoconv-common
+    ports:
+      - "2004:2001"
+    hostname: unoconv-4
+
+  unoconv-5:
+    <<: *unoconv-common
+    ports:
+      - "2005:2001"
+    hostname: unoconv-5
+
+  unoconv-6:
+    <<: *unoconv-common
+    ports:
+      - "2006:2001"
+    hostname: unoconv-6
+
+  unoconv-7:
+    <<: *unoconv-common
+    ports:
+      - "2007:2001"
+    hostname: unoconv-7
+
+  unoconv-8:
+    <<: *unoconv-common
+    ports:
+      - "2008:2001"
+    hostname: unoconv-8
+
+  unoconv-9:
+    <<: *unoconv-common
+    ports:
+      - "2009:2001"
+    hostname: unoconv-9
+
+  unoconv-10:
+    <<: *unoconv-common
+    ports:
+      - "2010:2001"
+    hostname: unoconv-10
+
+  unoconv-11:
+    <<: *unoconv-common
+    ports:
+      - "2011:2001"
+    hostname: unoconv-11
+
+  unoconv-12:
+    <<: *unoconv-common
+    ports:
+      - "2012:2001"
+    hostname: unoconv-12
+
+  unoconv-13:
+    <<: *unoconv-common
+    ports:
+      - "2013:2001"
+    hostname: unoconv-13
+
+  unoconv-14:
+    <<: *unoconv-common
+    ports:
+      - "2014:2001"
+    hostname: unoconv-14
+
+  unoconv-15:
+    <<: *unoconv-common
+    ports:
+      - "2015:2001"
+    hostname: unoconv-15
+
+  unoconv-16:
+    <<: *unoconv-common
+    ports:
+      - "2016:2001"
+    hostname: unoconv-16
+
+volumes:
+  volume-nfs:
+    driver_opts:
+      type: "nfs"
+      o: "addr=${NFS_IP},nolock,soft,rw"
+      device: ":${NFS_FOLDER}"
