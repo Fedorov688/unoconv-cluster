@@ -84,9 +84,6 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
     ports:
       - "10.10.1.1:2001:2001"
-    networks:
-      unsrvr:
-        ipv4_address: 10.10.1.2
     depends_on:
       - unoconv-0
       - unoconv-1
@@ -104,11 +101,3 @@ services:
       - unoconv-13
       - unoconv-14
       - unoconv-15
-
-networks:
-  unsrvr:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 10.10.1.0/24
-          gateway: 10.10.1.1
