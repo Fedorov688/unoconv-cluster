@@ -1,0 +1,103 @@
+version: '3.8'
+
+x-unoconv-common: &unoconv-common
+    build: .
+    image: unoconv:latest
+    restart: unless-stopped
+    user: "33:33"
+    expose:
+      - "2001"
+    command: unoconv --listener --server 0.0.0.0 --port 2001 -vvv
+    volumes:
+      - /var/www:/var/www
+
+services:
+
+  unoconv-0:
+    <<: *unoconv-common
+    hostname: unoconv-0
+
+  unoconv-1:
+    <<: *unoconv-common
+    hostname: unoconv-1
+
+  unoconv-2:
+    <<: *unoconv-common
+    hostname: unoconv-2
+
+  unoconv-3:
+    <<: *unoconv-common
+    hostname: unoconv-3
+
+  unoconv-4:
+    <<: *unoconv-common
+    hostname: unoconv-4
+
+  unoconv-5:
+    <<: *unoconv-common
+    hostname: unoconv-5
+
+  unoconv-6:
+    <<: *unoconv-common
+    hostname: unoconv-6
+
+  unoconv-7:
+    <<: *unoconv-common
+    hostname: unoconv-7
+
+  unoconv-8:
+    <<: *unoconv-common
+    hostname: unoconv-8
+
+  unoconv-9:
+    <<: *unoconv-common
+    hostname: unoconv-9
+
+  unoconv-10:
+    <<: *unoconv-common
+    hostname: unoconv-10
+
+  unoconv-11:
+    <<: *unoconv-common
+    hostname: unoconv-11
+
+  unoconv-12:
+    <<: *unoconv-common
+    hostname: unoconv-12
+
+  unoconv-13:
+    <<: *unoconv-common
+    hostname: unoconv-13
+
+  unoconv-14:
+    <<: *unoconv-common
+    hostname: unoconv-14
+
+  unoconv-15:
+    <<: *unoconv-common
+    hostname: unoconv-15
+
+  nginx:
+    image: nginx:1.19.2-alpine
+    hostname: nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "2001:2001"
+    depends_on:
+      - unoconv-0
+      - unoconv-1
+      - unoconv-2
+      - unoconv-3
+      - unoconv-4
+      - unoconv-5
+      - unoconv-6
+      - unoconv-7
+      - unoconv-8
+      - unoconv-9
+      - unoconv-10
+      - unoconv-11
+      - unoconv-12
+      - unoconv-13
+      - unoconv-14
+      - unoconv-15
